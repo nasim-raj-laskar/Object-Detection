@@ -44,12 +44,12 @@ You need to place the following files in the same directory:
 
 ```
 /Object-Detection
-    ├── obj-dect.ipynb               # The main Jupyter notebook
+    ├── obj-dect.ipynb                                 # The main Jupyter notebook
     ├── ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt   # Model configuration file
-    ├──frozen_inference_graph.pb    # Pre-trained model file
-    ├──bmw-m4.jpg                    # sample image
-    ├──1721294-hd_1920_1080_25fps.mp4   #sample video
-    └──Labels.txt                   # COCO class labels
+    ├──frozen_inference_graph.pb                       # Pre-trained model file
+    ├──bmw-m4.jpg                                      # sample image
+    ├──1721294-hd_1920_1080_25fps.mp4                  #sample video
+    └──Labels.txt                                      # COCO class labels
     
 ```
 Make sure to download or move the required files into the project folder to ensure smooth execution.
@@ -105,6 +105,8 @@ with open('Labels.txt', 'rt') as fpt:
 When you run the project, you will see images or video frames with bounding boxes drawn around the detected objects. The label of the detected object and its confidence score will also be displayed.
 
 Sample output from object detection:
+
+![Object Detection Sample](img/output-img.png)
 
 
 
