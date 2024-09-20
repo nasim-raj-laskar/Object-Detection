@@ -45,6 +45,7 @@ You need to place the following files in the same directory:
 ```
 /Object-Detection
     ├── obj-dect.ipynb                                 # The main Jupyter notebook
+    ├── obj-dect-real-time.ipynb                       # Main Jupyter notebook for real time video testing
     ├── ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt   # Model configuration file
     ├──frozen_inference_graph.pb                       # Pre-trained model file
     ├──bmw-m4.jpg                                      # sample image
