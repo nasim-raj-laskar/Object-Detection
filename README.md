@@ -1,19 +1,19 @@
 # Object Detection using SSD MobileNet V3
 ## Project Overview
-This project showcases a powerful object detection pipeline using the pre-trained SSD MobileNet V3 model on the COCO dataset. Object detection allows computers to detect and recognize objects from images and videos. The SSD MobileNet model is known for its efficiency and accuracy, making it suitable for real-time object detection tasks.
+This project implements object detection using the SSD MobileNet V3 model, trained on the COCO dataset, capable of detecting objects in both static images and real-time video streams from a webcam. The project is optimized for detecting everyday objects such as people, cars, animals, and more, using the lightweight SSD MobileNet V3 architecture.
 
-This project includes:
+## It features:
 
-- Loading a pre-trained object detection model.
-- Detecting objects in images or videos.
-- Annotating detected objects with bounding boxes and class labels.
-- Visualizing results in a user-friendly format.
+- Object detection from static images or video files.
+- Real-time object detection using a webcam, displaying live annotated results with bounding boxes and class labels.
+
 
 ## Features
-- Real-time Object Detection: Detect objects from live video streams or image sequences.
-- Fast & Lightweight Model: SSD MobileNet is optimized for both performance and accuracy.
-- Pre-trained on COCO dataset: Can recognize 80 different object classes like people, animals, cars, etc.
-- OpenCV Integration: Leverages OpenCV's DNN module for easy deployment.
+- Static & Real-time Detection: Detect objects in images, video files, or directly from a webcam.
+- Efficient Model: SSD MobileNet V3 is lightweight yet accurate, suitable for real-time performance.
+- 80 Classes Supported: Detect everyday objects from the COCO dataset, including people, animals, vehicles, and more.
+- OpenCV Integration: Built using OpenCV's DNN module for easy integration and fast inference.
+
 
 ## Requirements and Installation
 
@@ -69,7 +69,8 @@ To run the object detection model, follow these steps:
 ```
 jupyter notebook
 ```
-2.Navigate to the directory where the obj-dect.ipynb file is located.
+2.Navigate to the directory where `the obj-dect.ipynb`  & `obj-dect-real-time.ipynb` file is located.
+
 3.Open the notebook and run the cells in sequence.
 ### 3. Model Description
 
@@ -120,17 +121,28 @@ img = cv2.imread('your-image.jpg')
 video = cv2.VideoCapture('your-video.mp4')
 ```
 ### 2. Adjust Detection Parameters
-You can tweak parameters like confidence threshold or model input size to balance accuracy and performance for your specific application.
+- You can tweak parameters like confidence threshold or model input size to balance accuracy and performance for your specific application.
 
 ```
 model.setInputSize(300, 300)  # Adjust for speed vs accuracy
 model.setInputSwapRB(True)    # Adjust color channel swapping
 ```
+- Adjusting the Confidece Threshold
+Modify the confThreshold parameter in the model.detect() function to adjust the detection sensitivity. Higher values will reduce false positives, but may also miss some objects:
+```
+ClassIndex, confidence, bbox = model.detect(frame, confThreshold=0.55)
+```
+### 3.Changing Webcam Feed
+If you have multiple webcams, you can change the camera input by updating the `cv2.VideoCapture()` function:
+```
+cap = cv2.VideoCapture(1)  # For another webcam
+```
 ## Troubleshooting
 
-- 1.Model not found error: Ensure that the frozen_inference_graph.pb and ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt files are in the same directory as the notebook.
+- 1.Model not found error: Ensure that the `frozen_inference_graph.pb` , `ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt` and `Labels.txt`files are in the same directory as the notebook.
 - 2.Incorrect paths: Double-check file paths for images, videos, and model files.
 - 3.Missing dependencies: Ensure all required Python libraries are installed (use pip list to verify).
+- 4.Webcam not opening: Ensure your webcam is functioning properly and that the correct device index is used (`0` for the default webcam).
 
 ## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests. You can contribute by:
